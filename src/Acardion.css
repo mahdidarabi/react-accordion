@@ -1,0 +1,54 @@
+.accordion {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.accordion-content {
+  margin-bottom: 0.3rem;
+}
+
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #21aeca;
+}
+
+.accordion-title:hover {
+  background-color: #3ab4cc;
+}
+
+.accordion-title,
+.accordion-content {
+  padding: 1rem;
+}
+
+.accordion-content {
+  background-color: #39b9d2;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 18px;
+  }
+
+  .accordion {
+    width: 90%;
+  }
+}
+
+.accordion-transition-enter {
+  opacity: 0;
+}
+.accordion-transition-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.accordion-transition-exit {
+  opacity: 1;
+}
+.accordion-transition-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
