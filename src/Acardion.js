@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Transition } from 'react-transition-group';
+import { ReactExpandableListView } from 'react-expandable-listview';
 
 import './Acardion.css';
 
@@ -7,10 +8,10 @@ const Accordion = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
   const accordionRef = useRef(null);
 
-  const duration = 300;
+  const duration = 1000;
 
   const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
+    transition: `height ${duration}ms ease-in-out`,
     opacity: 0,
     // visibility: 'visible',
     display: 'block',
@@ -19,7 +20,7 @@ const Accordion = ({ title, content }) => {
   const transitionStyles = {
     entering: { display: 'block', opacity: 1 },
     entered: { display: 'block', opacity: 1 },
-    exiting: { display: 'block', opacity: 0 },
+    exiting: { display: 'none', opacity: 0 },
     exited: { display: 'none', opacity: 0 },
   };
 
@@ -29,12 +30,7 @@ const Accordion = ({ title, content }) => {
         <div>{title}</div>
         <div>{isOpen ? '-' : '+'}</div>
       </div>
-      {/* <CSSTransition
-        nodeRef={accordionRef}
-        in={isOpen}
-        timeout={200}
-        classNames="accordion-transition"
-      > */}
+
       <Transition nodeRef={accordionRef} in={isOpen} timeout={duration}>
         {(state) => (
           <div
@@ -49,7 +45,6 @@ const Accordion = ({ title, content }) => {
           </div>
         )}
       </Transition>
-      {/* </CSSTransition> */}
     </div>
   );
 };
